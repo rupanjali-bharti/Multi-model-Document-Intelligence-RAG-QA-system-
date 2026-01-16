@@ -1,0 +1,9 @@
+faiss-cpu 
+pymupdf 
+pdfplumber
+pytesseract 
+pillow 
+streamlit 
+numpy 
+tqdm 
+requests
