@@ -48,7 +48,7 @@ Answer:
             "inputs": prompt,
             "parameters": {
                 "max_new_tokens": 300,
-                "temperature": 0.2
+                "temperature": 0.7
             }
         }
     )

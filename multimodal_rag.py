@@ -76,10 +76,15 @@ def generate_answer(context, query):
         # Using chat_completion ensures compatibility with 2026 Inference Providers
         response = client.chat_completion(
             model=MODEL_ID,
-            messages=[
+           messages=[
                 {
                     "role": "system", 
-                    "content": "You are a helpful assistant. Answer the question ONLY using the provided context. If the answer is not in the context, say you don't know. Cite your sources as [Source 1], [Source 2], etc."
+                    "content": """You are an expert document analyst. 
+                    Your goal is to extract specific details. If the context mentions policies, 
+                    look for keywords like 'fiscal', 'monetary', 'reform', or 'tax' and 
+                    summarize what they are. Even if the context is brief, provide the 
+                    most detailed answer possible based on the available text. 
+                    Cite your sources."""
                 },
                 {
                     "role": "user", 
@@ -87,7 +92,7 @@ def generate_answer(context, query):
                 }
             ],
             max_tokens=512,
-            temperature=0.3
+            temperature=0.7
         )
         # Access the content from the chat response object
         return response.choices[0].message.content
